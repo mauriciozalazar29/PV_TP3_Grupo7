@@ -16,4 +16,4 @@ La aplicación cuenta con las siguientes funcionalidades:
 React: Biblioteca de JavaScript para construir interfaces de usuario
 Vite: Herramienta de compilación que proporciona un entorno de desarrollo más rápido
 CSS: Para el diseño y estilizado de la interfaz
-Estado con useState: Para manejar el estado de la aplicación y sus componentes
+Estado con useState: Para manejar el estado de la aplicación y sus componentes.
