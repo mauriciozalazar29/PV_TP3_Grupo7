@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import TaskInput from './componentes/TaskInput';
-
+import Productos from './ejercicioAdicional/productos';
 import TaskList from './componentes/TaskList';
-
+import './App.css';
 function App(){
   const [agregar, setAgregar] = useState([]);
 
@@ -30,6 +30,11 @@ function App(){
           onDelete={deleteAgregar}
         
         />
+        {/* Lo que ya tengas */}
+        <h1>Mi app</h1>
+
+        {/* Tu nuevo componente */}
+        <Productos />
         
     </div>
     
