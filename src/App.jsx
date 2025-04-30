@@ -19,9 +19,22 @@ function App() {
     setAgregar(agregar.filter((_, i) => i !== index));
   };
 
+  const appStyle = {
+    textAlign: "center",
+    fontFamily: "sans-serif",
+    padding: "50px"
+  };
+
+  const titleStyle = {
+    color: "#f7f7f7",
+    backgroundColor: "#1b66ff",
+    padding: "10px",
+    borderRadius: "5px"
+  };
+
   return (
-    <div>
-      <h1>Lista de Tareas</h1>
+    <div style={appStyle}>
+      <h1 style={titleStyle}>Lista de Tareas</h1>
       <TaskInput onAdd={addAgregar} />
       <TaskList 
         tasks={agregar} 

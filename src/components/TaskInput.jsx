@@ -9,16 +9,33 @@ function TaskInput({ onAdd }) {
             setAgregar("");
         }
     };
+    const containerStyle = {
+        display: "flex",
+        justifyContent: "center",
+        gap: "10px",
+        margin: "20px 0",
+        padding: "10px"
+      };
     
+      const inputStyle = {
+        padding: "8px",
+        width: "200px"
+      };
+    
+      const buttonStyle = {
+        padding: "8px 12px",
+        cursor: "pointer"
+      };
     return (
-        <div>
+        <div style={containerStyle}>
             <input 
                 type="text" 
                 value={agregar} 
                 onChange={(e) => setAgregar(e.target.value)} 
                 placeholder="Nueva tarea" 
+                style={inputStyle}
             />
-            <button onClick={handleAdd}>Agregar</button>
+            <button onClick={handleAdd} style={buttonStyle}>Agregar</button>
         </div>
     );
 }
