@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import TaskInput from './components/TaskInput';
 import TaskList from './components/TaskList';
+import ProductManagement from './components/ProductManagement';
 
 function App() {
   const [agregar, setAgregar] = useState([]);
@@ -27,7 +28,7 @@ function App() {
 
   const titleStyle = {
     color: "#f7f7f7",
-    backgroundColor: "#1b66ff",
+    backgroundColor: "#2b4c7e",
     padding: "10px",
     borderRadius: "5px"
   };
@@ -41,6 +42,7 @@ function App() {
         onToggle={toggleAgregar} 
         onDelete={deleteAgregar}
       />
+      <ProductManagement></ProductManagement>
     </div>
   );
 }
