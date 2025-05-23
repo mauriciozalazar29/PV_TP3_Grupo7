@@ -1,41 +1,67 @@
 import React, { useState } from "react";
+import { FiPlus } from "react-icons/fi";
 
 function TaskInput({ onAdd }) {
-    const [agregar, setAgregar] = useState("");
+    const [inputValue, setInputValue] = useState("");
 
     const handleAdd = () => {
-        if (agregar.trim() !== "") {
-            onAdd(agregar);
-            setAgregar("");
+        if (inputValue.trim() !== "") {
+            onAdd(inputValue);
+            setInputValue("");
         }
     };
-    const containerStyle = {
-        display: "flex",
-        justifyContent: "center",
-        gap: "10px",
-        margin: "20px 0",
-        padding: "10px"
-      };
-    
-      const inputStyle = {
-        padding: "8px",
-        width: "200px"
-      };
-    
-      const buttonStyle = {
-        padding: "8px 12px",
-        cursor: "pointer"
-      };
+
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleAdd();
+        }
+    };
+
     return (
-        <div style={containerStyle}>
+        <div style={{
+            display: 'flex',
+            gap: '10px',
+            marginBottom: '20px',
+            width: '100%',
+            maxWidth: '600px',
+            margin: '0 auto 20px'
+        }}>
             <input 
                 type="text" 
-                value={agregar} 
-                onChange={(e) => setAgregar(e.target.value)} 
-                placeholder="Nueva tarea" 
-                style={inputStyle}
+                value={inputValue} 
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder="¿Qué necesitas hacer hoy?" 
+                style={{
+                    flex: 1,
+                    padding: '12px 15px',
+                    border: '1px solid #ddd',
+                    borderRadius: '8px',
+                    fontSize: '16px',
+                    outline: 'none',
+                    transition: 'border 0.3s',
+                }}
+                className="task-input"
             />
-            <button onClick={handleAdd} style={buttonStyle}>Agregar</button>
+            <button 
+                onClick={handleAdd} 
+                style={{
+                    backgroundColor: '#2ecc71',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '8px',
+                    padding: '0 20px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    cursor: 'pointer',
+                    opacity: inputValue.trim() ? 1 : 0.7
+                }}
+                disabled={!inputValue.trim()}
+            >
+                <FiPlus size={18} />
+                <span>Agregar</span>
+            </button>
         </div>
     );
 }

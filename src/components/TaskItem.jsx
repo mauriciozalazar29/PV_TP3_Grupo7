@@ -1,42 +1,64 @@
 import React from "react";
+import { FiCheck, FiTrash2 } from "react-icons/fi";
 
 function TaskItem({ task, onToggle, onDelete }) {
-    const itemStyle = {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        marginBottom: "8px",
-        padding: "6px",
-        border: "1px solid #ccc",
-        borderRadius: "5px",
-        flexWrap: "wrap"
-      };
-    
-      const textStyle = {
-        textDecoration: task.completada ? "line-through" : "none",
-        color: task.completada ? "#4e4d4a" : "#f7f7f7",
-        flexGrow: 1,
-        textAlign: "left",
-        wordBreak: "break-word",
-        maxWidth: "70%",
-      };
-    
-      const buttonStyle1 = {
-        backgroundColor: "#057c46",
-        marginLeft: "5px",
-        padding: "4px 8px",
-      
-      };
-      const buttonStyle2 = {
-        backgroundColor: "#991818",
-        marginLeft: "5px",
-        padding: "4px 8px"
-      };
     return (
-        <li style={itemStyle}>
-            <span style={textStyle}>{task.tarea}</span>
-            <button onClick={onToggle} style={buttonStyle1} >Realizada</button>
-            <button onClick={onDelete} style={buttonStyle2} >Eliminar</button>
+        <li style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginBottom: "12px",
+            padding: "15px",
+            backgroundColor: task.completed ? '#f8f9fa' : '#fff',
+            border: "1px solid #e9ecef",
+            borderRadius: "8px",
+            boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+            transition: 'all 0.3s ease'
+        }}>
+            <span style={{
+                textDecoration: task.completed ? "line-through" : "none",
+                color: task.completed ? "#95a5a6" : "#2c3e50",
+                flexGrow: 1,
+                textAlign: "left",
+                wordBreak: "break-word",
+                maxWidth: "70%",
+                fontSize: '16px'
+            }}>
+                {task.text}
+            </span>
+            
+            <div style={{ display: 'flex', gap: '8px' }}>
+                <button 
+                    onClick={onToggle} 
+                    style={{
+                        backgroundColor: task.completed ? '#bdc3c7' : '#2ecc71',
+                        color: 'white',
+                        border: 'none',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '5px',
+                        padding: '8px 12px'
+                    }}
+                >
+                    <FiCheck size={16} />
+                    <span>{task.completed ? 'Deshacer' : 'Completar'}</span>
+                </button>
+                <button 
+                    onClick={onDelete} 
+                    style={{
+                        backgroundColor: '#e74c3c',
+                        color: 'white',
+                        border: 'none',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '5px',
+                        padding: '8px 12px'
+                    }}
+                >
+                    <FiTrash2 size={16} />
+                    <span>Eliminar</span>
+                </button>
+            </div>
         </li>
     );
 }

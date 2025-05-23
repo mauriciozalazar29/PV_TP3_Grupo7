@@ -4,45 +4,37 @@ import TaskList from './components/TaskList';
 import ProductManagement from './components/ProductManagement';
 
 function App() {
-  const [agregar, setAgregar] = useState([]);
+  const [tasks, setTasks] = useState([]);
   
-  const addAgregar = (text) => {
-    setAgregar([...agregar, { tarea: text, completada: false }]);
-  };
-  
-  const toggleAgregar = (index) => {
-    const updatedAgregar = [...agregar];
-    updatedAgregar[index].completada = !updatedAgregar[index].completada;
-    setAgregar(updatedAgregar);
+  const addTask = (text) => {
+    setTasks([...tasks, { text: text, completed: false }]);
   };
   
-  const deleteAgregar = (index) => {
-    setAgregar(agregar.filter((_, i) => i !== index));
+  const toggleTask = (index) => {
+    const updatedTasks = [...tasks];
+    updatedTasks[index].completed = !updatedTasks[index].completed;
+    setTasks(updatedTasks);
   };
-
-  const appStyle = {
-    textAlign: "center",
-    fontFamily: "sans-serif",
-    padding: "50px"
-  };
-
-  const titleStyle = {
-    color: "#f7f7f7",
-    backgroundColor: "#2b4c7e",
-    padding: "10px",
-    borderRadius: "5px"
+  
+  const deleteTask = (index) => {
+    setTasks(tasks.filter((_, i) => i !== index));
   };
 
   return (
-    <div style={appStyle}>
-      <h1 style={titleStyle}>Lista de Tareas</h1>
-      <TaskInput onAdd={addAgregar} />
-      <TaskList 
-        tasks={agregar} 
-        onToggle={toggleAgregar} 
-        onDelete={deleteAgregar}
-      />
-      <ProductManagement></ProductManagement>
+    <div className="container">
+      <div className="section">
+        <h1 className="section-title">Gestión de Tareas</h1>
+        <TaskInput onAdd={addTask} />
+        <TaskList 
+          tasks={tasks} 
+          onToggle={toggleTask} 
+          onDelete={deleteTask}
+        />
+      </div>
+      
+      <div className="section">
+        <ProductManagement />
+      </div>
     </div>
   );
 }
